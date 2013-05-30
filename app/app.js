@@ -1,4 +1,4 @@
-  Ext.BLANK_IMAGE_URL = './resources/images/s.gif';
+  Ext.BLANK_IMAGE_URL = 'http://i.imgur.com/AjwZ5pw.png';
 	Ext.tip.QuickTipManager.enable();
 
 	Ext.Loader.setConfig({
