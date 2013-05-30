@@ -11,7 +11,7 @@ initComponent: function() {
 			columnLines : true,
 			frame       : false,
 			border      : 0,
-			fixedsummarytips : false,
+			fixedsummarytips : true,
 			features    : [{
 				ftype   : 'fixedsummary',
 			}],
