@@ -1,4 +1,4 @@
-  Ext.BLANK_IMAGE_URL = 'http://m.UploadEdit.com/b015/1369958927431.gif';
+  Ext.BLANK_IMAGE_URL = './resources/images/s.gif';
 	Ext.tip.QuickTipManager.enable();
 
 	Ext.Loader.setConfig({
