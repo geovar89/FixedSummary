@@ -6,7 +6,7 @@
 		disableCaching : false,  //???-->mode(debug:true, production:false)
 		paths          : {
 			'FixedSummary'   : './app',
-			'SoftOne' : './app/classes/softone'
+			'Libraries' : './app/classes/libraries'
 		}
 	});
 	
@@ -14,7 +14,7 @@
 		name               : 'FixedSummary',
 		requires           : [
 			'FixedSummary.view.Viewport',
-			'SoftOne.feature.FixedSummary'
+			'Libraries.feature.FixedSummary'
 		],
 		models      : [],
 		controllers : [],
