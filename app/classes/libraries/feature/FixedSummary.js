@@ -4,29 +4,29 @@ Ext.define('Libraries.feature.FixedSummary', {
 
     init: function() {
   	var summaryColumns    = this.getSummaryColumnsConfig(),
-			summaryFields     = this.getSummaryFieldsConfig(summaryColumns),
-			summaryGridConfig = {
-				xtype            : 'grid',
-				itemId           : 'fixedsummarygrid',
-				frame            : false,
-				border           : this.grid.border,
-				height           : 22,
-				layout			 : 'auto',
-				dock             : 'bottom',
-				bodyStyle        : this.grid.bodyStyle,
-				bodyCls          : this.grid.bodyCls,
-				hideHeaders      : true,
-				disableSelection : true,
-				columns 	     : summaryColumns,
-				viewConfig       : {
-					markDirty   : false,
-					getRowClass : function(record, index, rowParams){
-						return 'fixedsummaryrow' ;
-					}
-				},
-				store           : Ext.create('Ext.data.Store', {
-					fields : summaryFields
-				})
+	summaryFields     = this.getSummaryFieldsConfig(summaryColumns),
+	summaryGridConfig = {
+		xtype            : 'grid',
+		itemId           : 'fixedsummarygrid',
+		frame            : false,
+		border           : this.grid.border,
+		height           : 22,
+		layout			 : 'auto',
+		dock             : 'bottom',
+		bodyStyle        : this.grid.bodyStyle,
+		bodyCls          : this.grid.bodyCls,
+		hideHeaders      : true,
+		disableSelection : true,
+		columns 	     : summaryColumns,
+		viewConfig       : {
+			markDirty   : false,
+			getRowClass : function(record, index, rowParams){
+				return 'fixedsummaryrow' ;
+			}
+		},
+		store           : Ext.create('Ext.data.Store', {
+			fields : summaryFields
+			})
 		};
 		
 		Ext.apply(summaryGridConfig, this.grid.fixedConfig);
@@ -114,7 +114,7 @@ Ext.define('Libraries.feature.FixedSummary', {
                 case 'sum':
                     return store.sum(field, group);
                 case 'average':
-					return store.average(field, group);
+		    return store.average(field, group);
                 default:
                     return group ? {} : '';
             }
