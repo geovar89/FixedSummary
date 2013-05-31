@@ -21,6 +21,5 @@
 		
 		launch      : function() {
 			this.viewport = Ext.create('FixedSummary.view.Viewport');
-			//this.viewport.getStore().load();
 		}
 	});
