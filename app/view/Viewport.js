@@ -39,7 +39,6 @@ initComponent: function() {
 				layout        : 'card',
 				frame         : false,
 				border        : 0,
-				cls           : 'splash',
 				margin        : '0 4 4 0',
 				items		  :[{
 					xtype  : 'panel',
