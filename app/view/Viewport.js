@@ -1,100 +1,56 @@
 Ext.define('FixedSummary.view.Viewport', {
 extend       : 'Ext.container.Viewport',
 id        	 : 'appViewport',
-layout    	 : {
-	type  	 : 'fit',
-	align 	 : 'stretch'
-	},
+layout   	 : 'border',
+requires 	 : [
+	'FixedSummary.view.Users'
+],
 initComponent: function() {
-		var grid = {
-			xtype       : 'grid',
-			columnLines : true,
-			frame       : false,
-			border      : 0,
-			fixedsummarytips : false,
-			features    : [{
-				ftype   : 'fixedsummary',
-			}],
-			store       : Ext.create('FixedSummary.store.Users'),
-			columns 	: [{
-				xtype : 'rownumberer'
-			},{
-				xtype 	: 'actioncolumn',
-				iconCls : 'icon-card',
-				align   : 'center',
-				text	: 'ID-Count',
-				width	: 70,
-				fixedSummaryType: "count",
-				fixedSummaryRenderer :function(value, metadata, record) {
-						return Ext.String.format('<span style="color:red;float:right;">{0} student{1}</span>',value, value !== 1 ? 's' : ''); }
-				
-			},{
-				dataIndex: 'Name',
-				text	 : 'Student Name',
-				flex 	 : 1
-			}, {
-				dataIndex: 'Surname',
-				text	 : 'Student Surname',
-				flex 	 : 1
-			},{
-				text	 : 'Courses',
-				columns  :[{
-					dataIndex: 'Maths',
-					text	 : 'Maths-Avg',
-					flex 	 : 1,
-					align	 : 'right',
-					fixedSummaryType: 'average',
-					fixedSummaryRenderer: Ext.util.Format.numberRenderer('0.00') 
-				},{
-					dataIndex: 'Physics',
-					text	 : 'Physics-Avg',
-					flex	 : 1,
-					align	 : 'right',
-					fixedSummaryType: 'average',
-					fixedSummaryRenderer: Ext.util.Format.numberRenderer('0.00') 
-				},{
-					dataIndex: 'Chemistry',
-					text	 : 'Chemistry-Avg',
-					flex	 : 1,
-					align	 : 'right',
-					fixedSummaryType: 'average',
-					fixedSummaryRenderer: Ext.util.Format.numberRenderer('0.00') 
-				},{
-					dataIndex: 'Biology',
-					text	 : 'Biology-Avg',
-					flex	 : 1,
-					align	 : 'right',
-					fixedSummaryType: 'average',
-					fixedSummaryRenderer: Ext.util.Format.numberRenderer('0.00') 
-				}]
-			},{
-				dataIndex: 'Absences',
-				text	 : 'Absences - Min',
-				flex 	 : 1,
-				align	 : 'right',
-				fixedSummaryType: "min",
-				fixedSummaryRenderer: Ext.util.Format.numberRenderer('0.00') 
-			},{
-				dataIndex: 'Absences',
-				text	 : 'Absences - Max',
-				flex	 : 1,
-				align	 : 'right',
-				fixedSummaryType: "max",
-				fixedSummaryRenderer: Ext.util.Format.numberRenderer('0.00') 
-			},{
-				dataIndex: 'Papers',
-				text	 : 'Papers-Sum',
-				flex	 : 1,
-				align	 : 'right',
-				fixedSummaryType: "sum",
-				fixedSummaryRenderer: Ext.util.Format.numberRenderer('0.00') 
-			}]
-		};
-		
 	
-        this.items = [
-			grid
-		];		
+	this.items = [{
+				region       : 'west',
+				width        : 200,
+				collapseMode : 'mini',
+				bodyCls      : 'noBorder',
+				frame        : false,
+				border       : 0,
+				split        : true,
+				collapsible  : true,
+				preventHeader: true,
+				enableToggle : true,
+				bodyStyle    : 'padding:10px;',
+				layout       : {
+					type  : 'vbox',
+					align : 'stretch'
+					},
+				html		 :[
+							  '<b>Instructions :</b></br> ',
+							  'Put the mouse over the desired column-header and wait until the tooltip appears.The tooltip will remain ',
+							  'there until you move the mouse out of the header.</br></br>',
+							  'This tooltip contains a table with all the available summary values for the chosen column.</br></br>',
+							  'If the type of the column is "int" or "float" you will see count, sum, min, max, average</br>',
+							  'In any other case you will see only count.</br></br>',
+							  'The tooltip will appear only if the column has a fixedSummaryType.'
+							  ].join('')
+			},{
+				region        : 'center',
+				id            : 'appCenter',
+				xtype         : 'container',
+				layout        : 'card',
+				frame         : false,
+				border        : 0,
+				cls           : 'splash',
+				margin        : '0 4 4 0',
+				items		  :[{
+					xtype  : 'panel',
+					id	   : 'appCards',
+					layout : 'card',
+					items  :[{
+						xtype  : 'crdusers',
+						itemId : 'crdUsers'
+						}]
+					}]
+			}];		
 		
         this.callParent();
     }
