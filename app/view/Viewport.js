@@ -43,6 +43,7 @@ initComponent: function() {
 					text	 : 'Maths-Avg',
 					flex 	 : 1,
 					align	 : 'right',
+					sortable : 'true',
 					fixedSummaryType: 'average',
 					fixedSummaryRenderer: Ext.util.Format.numberRenderer('0.00') 
 				},{
@@ -50,6 +51,7 @@ initComponent: function() {
 					text	 : 'Physics-Avg',
 					flex	 : 1,
 					align	 : 'right',
+					sortable : 'true',
 					fixedSummaryType: 'average',
 					fixedSummaryRenderer: Ext.util.Format.numberRenderer('0.00') 
 				},{
@@ -57,6 +59,7 @@ initComponent: function() {
 					text	 : 'Chemistry-Avg',
 					flex	 : 1,
 					align	 : 'right',
+					sortable : 'true',
 					fixedSummaryType: 'average',
 					fixedSummaryRenderer: Ext.util.Format.numberRenderer('0.00') 
 				},{
@@ -64,6 +67,7 @@ initComponent: function() {
 					text	 : 'Biology-Avg',
 					flex	 : 1,
 					align	 : 'right',
+					sortable : 'true',
 					fixedSummaryType: 'average',
 					fixedSummaryRenderer: Ext.util.Format.numberRenderer('0.00') 
 				}]
