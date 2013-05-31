@@ -1,4 +1,4 @@
-Ext.define('SoftOne.feature.FixedSummary', {
+Ext.define('Libraries.feature.FixedSummary', {
     extend: 'Ext.grid.feature.Feature',
     alias: 'feature.fixedsummary',
 
