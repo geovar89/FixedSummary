@@ -1,4 +1,4 @@
-  Ext.BLANK_IMAGE_URL = 'http://www.lundin-petroleum.com/images/blank.gif';
+  Ext.BLANK_IMAGE_URL = 'http://static.ak.fbcdn.net/images/blank.gif';
 	Ext.tip.QuickTipManager.enable();
 
 	Ext.Loader.setConfig({
