@@ -15,7 +15,6 @@ Ext.define('Libraries.feature.FixedSummary', {
 		dock             : 'bottom',
 		bodyStyle        : this.grid.bodyStyle,
 		bodyCls          : this.grid.bodyCls,
-		hideHeaders      : true,
 		disableSelection : true,
 		columns 	     : summaryColumns,
 		viewConfig       : {
@@ -170,7 +169,7 @@ Ext.define('Libraries.feature.FixedSummary', {
 	
 	onBoxReady : function(grid, width, height, eoptions){
 		this.summaryGrid = this.grid.getDockedItems('grid[itemId="fixedsummarygrid"]')[0];
-		
+		this.summaryGrid.view.headerCt.el.dom.hidden = true;
 		this.summaryGrid.view.el.dom.style.overflowX = 'hidden';
 		
 		this.grid.on({
