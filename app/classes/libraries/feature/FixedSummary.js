@@ -15,6 +15,7 @@ Ext.define('Libraries.feature.FixedSummary', {
 		dock             : 'bottom',
 		bodyStyle        : this.grid.bodyStyle,
 		bodyCls          : this.grid.bodyCls,
+		//hideHeaders      : true,
 		disableSelection : true,
 		columns 	     : summaryColumns,
 		viewConfig       : {
@@ -34,7 +35,6 @@ Ext.define('Libraries.feature.FixedSummary', {
 			return;
 		
 		this.grid.summarize   = Ext.bind(this.summarize, this);
-		
 		this.grid.dockedItems = this.grid.dockedItems || [];
 		this.grid.dockedItems.push(summaryGridConfig);
 		
@@ -77,7 +77,12 @@ Ext.define('Libraries.feature.FixedSummary', {
 					calculated.sum     = this.getSummary(store, 'sum', col.dataIndex, false);
 				}
 			
-				summaryModel.set(sCol.dataIndex, calculated[col.fixedSummaryType]);
+				if(Ext.isFunction(col.fixedSummaryType)){
+					summaryModel.set(sCol.dataIndex,this.getSummary(store, col.fixedSummaryType, col.dataIndex, false));
+				}
+				else{
+					summaryModel.set(sCol.dataIndex, calculated[col.fixedSummaryType]);
+				}
 				
 				sCol.gridColumn.fixedsummarydata = {
 					type    : col.fixedsummarycoltype,
@@ -171,7 +176,6 @@ Ext.define('Libraries.feature.FixedSummary', {
 		this.summaryGrid = this.grid.getDockedItems('grid[itemId="fixedsummarygrid"]')[0];
 		this.summaryGrid.view.headerCt.el.dom.hidden = true;
 		this.summaryGrid.view.el.dom.style.overflowX = 'hidden';
-		
 		this.grid.on({
 			scope        : this,
 			columnresize : this.onColumnResize,
@@ -248,27 +252,27 @@ Ext.define('Libraries.feature.FixedSummary', {
 				'</table>'
 			].join('');
 		
-		if (this.grid.fixedsummarytips)
 			for (var i=0, j=actualColumns.length; i<j; i++){
 				aCol = actualColumns[i];
 				type = this.findType(aCol);
 				
 				if (aCol.fixedSummaryType){
 					aCol.fixedsummarycoltype = type;
-					aCol.fixedsummarytooltip = Ext.create('Ext.tip.ToolTip', {
-						target      : aCol.el.dom,
-						tpl         : new Ext.XTemplate(tip, {
-							renderNumber : this.renderNumber
-						}),
-						padding     : 0,
-						bodyPadding : 0,
-						margin      : 0,
-						frame       : false,
-						border      : 0,
-						bodyBorder  : 0,
-						showDelay   : 1000,
-						dismissDelay: 0
-					});
+					if (this.grid.fixedsummarytips)
+						aCol.fixedsummarytooltip = Ext.create('Ext.tip.ToolTip', {
+							target      : aCol.el.dom,
+							tpl         : new Ext.XTemplate(tip, {
+								renderNumber : this.renderNumber
+							}),
+							padding     : 0,
+							bodyPadding : 0,
+							margin      : 0,
+							frame       : false,
+							border      : 0,
+							bodyBorder  : 0,
+							showDelay   : 1000,
+							dismissDelay: 0
+						});
 				}
 			}			
 	},
@@ -430,3 +434,4 @@ Ext.define('Libraries.feature.FixedSummary', {
 		this.summaryGrid.columns[colIndex].show();
 	}
 })
+
